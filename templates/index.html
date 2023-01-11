@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+{% block title %}<title>APIテスト</title>{% endblock %}
+{% block contents %}
+    <a class="fs-1" href="{{ url_for('dictionary', dictype=0) }}">To dictionary</a>
+    <a href="{{ url_for('dictionary', dictype=1) }}">To Mydictionary</a>
+{% endblock %}
