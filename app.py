@@ -3,8 +3,12 @@ from flask_cors import CORS
 import os
 from dotenv import load_dotenv
 from mydatabase import MyDatabase
+import env_dev as ed
+import init_db
 load_dotenv(override=True)
 
+if not os.path.isfile('./mydictionary.db'):
+    init_db.setup()
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -26,6 +30,12 @@ def get_words(dictype):
 def get_level_words(level):
     result = database.read_level(level)
     print(result)
+    return jsonify(result)
+
+
+@app.route("/get_api_key", methods=["GET"])
+def get_api_key():
+    result = ed.API_KEY
     return jsonify(result)
 
 @app.route('/add_mydic', methods=["POST"])

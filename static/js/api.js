@@ -102,21 +102,42 @@ function change_mode() {
   }
 }
 
-function show_page(p){
+async function show_page(p){
     let word_area = document.querySelector('.word-area');
     word_area.innerHTML = '';
     let pn = length - (p * Div);
     if (pn >= Div){
       pn = Div;
     }
-    
+    // let api_key = await get_api_key("http://127.0.0.1:5000/get_api_key");
     for (let i = p * Div; i < (p*Div+pn); i++) {
+      // let api_url = "https://pixabay.com/api/?key=" + api_key + '&q=';
       let e_tr = document.createElement('tr');
       e_tr.innerHTML = "<td>"+data[i]["word"]+"</td>";
       e_tr.innerHTML += "<td>"+data[i]["mean"]+"</td>";
-      e_tr.innerHTML += "<td>"+data[i]["mean"]+"</td>";
+      // api_url += encodeURIComponent(data[i]["word"]);
+      // api_url += '&per_page=5';
+      // let img_url = null;
+      // let res = await fetch(api_url);
+      // let api_json = await res.json();
+      // console.log(data[i]["word"]);
+      // console.log(api_json);
+      // img_url = api_json.hits[0].previewURL;
+      // console.log(img_url);
+      if (data[i]['img_url'] == null){
+        e_tr.innerHTML += "<td><h3>No image...</h3></td>";
+      }
+      else{
+        e_tr.innerHTML += "<td>"+'<img src="'+data[i]['img_url']+'" class="table-img">'+"</td>";
+      }
       word_area.appendChild(e_tr);
     }  
+}
+
+async function get_api_key(url){
+  const response = await fetch(url);
+  const json = await response.json();
+  return json
 }
 
 async function get_words(url) {
