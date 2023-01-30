@@ -3,4 +3,8 @@
 {% block contents %}
     <a class="fs-1" href="{{ url_for('dictionary', dictype=0) }}">To dictionary</a>
     <a href="{{ url_for('dictionary', dictype=1) }}">To Mydictionary</a>
+    <button type="button" class="post-test">post-test</button>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='post_test.js') }}"></Script>
 {% endblock %}

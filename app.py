@@ -17,22 +17,23 @@ dbname = os.getenv('DB_NAME')
 database = MyDatabase(dbname=dbname)  # make instance of database 
 
 ##########################################################################
-
+# API
 # This function get dictionary data. dictype is 0 or 1.
 # dictype -> 0: all, 1: mydic
 @app.route('/get_words/<int:dictype>', methods=['GET'])  # GET method
-def get_words(dictype):
+def get_words(dictype):  # データベースから全単語データを読み出してjson形式で返す
     result = database.read_dic(dictype)
     print(result)
     return jsonify(result)
 
+# MyDictionaryのデータをクエリで渡されたレベルに合わせてとってくる
 @app.route('/get_level_words/<int:level>', methods=['GET'])
 def get_level_words(level):
     result = database.read_level(level)
     print(result)
-    return jsonify(result)
+    return jsonify(result)  # json形式で返す
 
-
+# 画像取得の際に用いたAPI (本アプリで最終的には用いていない)
 @app.route("/get_api_key", methods=["GET"])
 def get_api_key():
     result = ed.API_KEY
@@ -51,6 +52,11 @@ def add_word(data):
 @app.route('/edit_word', methods=['POST'])
 def edit_word(data):
     return redirect(url_for('/dictionary'))
+
+@app.route('/post_test', methods=['POST'])
+def post_test(data):
+    print(data)
+    return jsonify('OK')
 
 #########################################################################
 
