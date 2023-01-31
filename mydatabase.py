@@ -1,16 +1,66 @@
 import sqlite3
 from database import Database
+import env_dev
+import requests
+import datetime
+
+
 
 class MyDatabase(Database):
     def add_word(self, data):  # add word
         self.connectdb()
         self.get_cur()
         # add word data
+        new_data = []
+        labels = [
+            'new_word',
+            'new_mean',
+            'new_sample_sentence',
+            'new_word_level',
+            'new_img_url',
+            'new_vc_url'
+        ]
+        self.cur.execute("SELECT * FROM dictionary WHERE word = ?", (data['new_word'],))
+        if self.cur.fetchone() != None:
+            return "This word is already exists in dictionary."
+            self.closedb()
+        for l in labels:
+            if l in data.keys():
+                new_data.append(data[l])
+                continue
+            if l == 'new_img_url':
+                api_url = "https://pixabay.com/api"
+                api_key = env_dev.API_KEY
+                headers= {
+
+                }
+                params={
+                    "key":api_key,
+                    "q":"",
+                    "lang":"en",
+                    "image_type":"photo"
+                }
+                params["q"] = data['new_word']
+                res = requests.get(api_url, headers=headers, params=params)
+                jsn = res.json()
+                hit = None
+                try:
+                    hit = jsn['hits'][0]
+                    new_data.append(hit["previewURL"])
+                except:
+                    new_data.append(hit)
+                continue
+            new_data.append(None)
+        new_data.append(datetime.datetime.today())
+        new_data.append(new_data[-1])
+        print('newdata: ',new_data)
         self.cur.execute(
             "INSERT INTO dictionary (word, mean, sample_sentence, word_level, img_url, vc_url, created_at, updated_at) VALUES(?, ?, ?, ?, ?, ?, ?, ?)",
-            data
+            new_data
         )
+        self.commitdb()
         self.closedb()
+        return "Insert into dictionary."
 
     # def make_dict(self, data):
     #     make_dict(data)

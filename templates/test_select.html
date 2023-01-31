@@ -1,0 +1,66 @@
+{% extends 'base.html' %} 
+{% block title %}
+<title>STUDY SELECT</title>
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/test_select.css') }}">
+    <script>
+ // チェックインボタン
+        function sign()
+            {
+				var signed = 'OK';
+				document.getElementById('signs').innerHTML = signed;
+				document.getElementById("signLogs").style.display = "block";
+				// チェックイン時間の取得
+				var data = new Date();
+				var year = data.getFullYear(); //年の取得
+				var month = data.getMonth() + 1; //取得月
+				var today = data.getDate(); //取得日
+				var year = year.toString();
+				var month = month.toString();
+				var today = today.toString();
+				var toshi = '年';
+				var tsuki = '月';
+				var niti =  '日'
+				var signday = year + toshi  + month + tsuki  + today + niti ; //年、月、日を組み合わせます
+				document.getElementById('todays').innerHTML = signday; //更新日
+			}
+    </script>
+{% endblock %}
+{% block contents %}
+   <!-- 毎日チェックイン -->
+<div class="sign-content">
+	    <!-- チェックイン時間 -->
+	    <div class="sign-time"><span id="todays">本日チェックイン</span></div>
+	    <!-- チェックインボタン -->
+	    <div class="sign-button">
+	    <div class="sign-button-big" style="text-align: center;">
+	    <button class="sign-button-small" onclick="sign()" id="signs" style="text-align: center; font-size: 10px;">チェックイン</button>
+    	</div>
+</div>
+<!-- チェックイン記録 -->
+<div class="sign-logs" style="display: none;" id="signLogs">
+    <span>もう<span id="signTimes">２</span>日間連続で勉強しました</span>
+</div>
+<div class="sign-texts"></div>
+<div>
+ <a class="date">50 </a>
+ <a class="date3">50 </a>
+  <a class="date1">13</a>
+  </div>
+  <br/>
+  <br/>
+<div>
+   <a class="date2">復習数</a>      <!-- 単語の復習数 -->
+ <a class="date2">ノルマ</a>        <!-- 今日覚える単語 -->
+  <a class="date2">スコア</a>       <!-- 前のテストのスコア　-->
+  </div>
+
+
+<div class="sign-texts mt-5">
+ <a href="{{ url_for('study') }}" class = "bright">今日の単語 </a>
+
+ <a href="http://www.60byo.net/v1_1/test.html" class = "bright">実力テスト</a>
+  
+</div>
+{% endblock %}

@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 from mydatabase import MyDatabase
 import env_dev as ed
 import init_db
+import json
+
 load_dotenv(override=True)
 
 if not os.path.isfile('./mydictionary.db'):
@@ -44,10 +46,25 @@ def add_mydic(data):
     # TODO: add mydic
     return redirect(url_for('/dictionary'))
 
-@app.route('/add_word', methods=['POST'])  # Postだけ受け付ける
-def add_word(data):
-    # result = request.form["param"]  # Postで送ったときのパラメータの名前を指定する
-    return redirect(url_for('/dictionary', dictype="0"))
+@app.route('/add_word', methods=["POST"])  # Postだけ受け付ける
+def add_word():
+    if request.method == "POST":
+        #result = request.form["param"]  # Postで送ったときのパラメータの名前を指定する
+        post_data = json.loads(request.get_data(as_text=True, parse_form_data=True))
+        # 単語の追加処理を入れる
+        # 単語があれば入れずにメッセージを返信
+        # 単語がなければ追加する。また、追加の際はAPIで画像をついでに追加する
+        res = None
+        print("Successfull connecting database.")
+        res = database.add_word(post_data)
+        # except:
+        #     res = "Can not connect database."
+        #     print("Can not connect database.")
+
+        res = {'message': res}
+        return jsonify(res)
+
+    return jsonify({"message": "You must use post method."})
 
 @app.route('/edit_word', methods=['POST'])
 def edit_word(data):
@@ -62,7 +79,7 @@ def post_test(data):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('home.html')
 
 @app.route('/dictionary', methods=['GET'])
 def dictionary():
@@ -79,12 +96,12 @@ def search():
 
 @app.route('/study_select')
 def study_select():
-    return render_template('study_select.html')
+    return render_template('test_select.html')
 
 
 @app.route('/study')
 def study():
-    return render_template('study.html')
+    return render_template('test_inside.html')
 
 
 # 5000番ポートでWebサーバを起動する

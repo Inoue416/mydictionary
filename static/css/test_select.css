@@ -1,0 +1,107 @@
+.sign-content {
+			width: 94vw;
+			height: 40vh;
+			margin-left: 3vw;
+		}
+
+		.sign-time {
+			width: 98%;
+			height: 8vh;
+			text-align: center;
+			line-height: 10vh;
+			font-size: 18px;
+			margin-left: 1%;
+		}
+
+		.sign-button {
+			width: 98%;
+			height: 15vh;
+			margin-left: 1%;
+			font-size: 22px;
+			text-align: center;
+			line-height: 11vh;
+			margin-top: 5%;
+		}
+
+		.sign-button-big {
+			width: 28%;
+			height: 73%;
+			margin: 0 auto;
+			border-radius: 50%;
+			background-color: #ffc1c1;
+			color: white;
+			padding: 3%;
+		}
+
+		.sign-button-small {
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+			border-radius: 50%;
+			background-color: #dd514c;
+			color: white;
+			border: 0;
+			cursor: pointer;
+		}
+
+		.sign-button-small:hover {
+			color: black;
+			background-color: #ffffff;
+		}
+
+		.sign-logs {
+			width: 98%;
+			height: 0vh;
+			margin-left: 1%;
+			text-align: center;
+			font-size: 12px;
+			line-height: 3vh;
+		}
+
+		.sign-logs>span>a {
+			color: #436eee;
+		}
+
+		.sign-texts {
+			width: 98%;
+			height: 18vh;
+			margin-left: 1%;
+			text-align: center;
+			font-size: 16px;
+			color: red;
+		}
+
+        .date{
+
+            background-color: #B3EE78;
+            margin: 20px;
+            margin-left:35px ;
+            padding:15px;
+        }
+          .date1{
+
+            background-color: #B3EE78;
+            margin: 20px;
+            margin-left:50px ;
+            padding:17px;
+        }
+        .date3{
+
+            background-color: #B3EE78;
+            margin: 20px;
+            margin-left:50px ;
+            padding:15px;
+        }
+        .date2{
+            font-size: 10;
+
+             background-color: #B3EE78;
+             margin: 20px;
+            padding:15px;
+        }
+
+.bright{
+    background-color:#ffc1c1;
+    margin: 30px;
+    padding: 20px;
+}

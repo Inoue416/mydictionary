@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>HOME</title>
+{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
+{% endblock %}
+{% block contents %}
+  <!-- 検索ボックス、ボタンの作成 -->
+  <div class="container"> 
+      <!-- 検索ボックス -->
+      <input type="seach" name="search" placeholder="キーワードを入力"size=30 maxlength="200"> 
+      <!-- 検索ボタン -->
+      <input type="submit" name="submit" value="検索"> 
+  </div>
+　</br>
+　</br>
+  <div> 
+    <!-- 検索結果の表示(Weblio画面) -->
+    <iframe id="output_frame" class="frame_center" src="" width="400" height="500"></iframe> 
+  </div>
+  <div>
+     <!-- チェックボックスの作成 -->
+    <input type="checkbox" id="checkbox">
+    <label for="checkbox">MyDictionaryに追加</label>
+    <p>追加する単語：<span id="checkbox_status"></span></p>
+    <p>意味：<input type="text" name="mean" id="textid" value="">
+      <input type="button" name="button" value="追加"></p>
+  
+    <!-- <label><input type="checkbox" name="checkbox" value="on"
+      onclick="connecttext('textforscb', this.checked);"> Mydictionaryに追加</label>
+    <p>追加する単語：<span id="checkbox_status"></span></p>
+    <p>意味：<input type="text" name="Add_Mydictionary" id="textforscb" value="">
+      <input type="button" name="button" value="追加"></p> -->
+  </div>
+
+  <div id="search_result"></div>
+  {% endblock %}
+  {% block scripts %}
+  <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+  {% endblock %}

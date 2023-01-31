@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Test_inside</title>
+{% endblock %}
+
+    <!--road scripts-->
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/test_inside.css') }}">
+{% endblock %}
+{% block contents %}
+<br/>
+<!--score-->
+<h6>score:<span id="score">0</span></h6>
+
+<!--Q & A-->
+<h1 id="Question">Q.    </h1>
+<br/>
+<h1 id="Answer">A.    </h1>
+<br/>
+<br/>
+<!--level button (1,2,3)-->
+<h5> ~Level of understanding~ </h5>
+<div id="button_level">
+  <button type="button" id = "level1" class="btn btn-success btn-lg">1</button>
+  <button type="button" id = "level2" class="btn btn-success btn-lg">2</button>
+  <button type="button" id = "level3" class="btn btn-success btn-lg">3</button>
+</div>
+
+<br/>
+<!--judge button (〇✕△)-->
+<h5> ~User judge~ </h5>
+<div id="button_judge">
+  <button type="button" id="circle" class="btn btn-outline-dark btn-lg">〇</button>
+  <button type="button" id="triangle" class="btn btn-outline-dark btn-lg">▲</button>
+  <button type="button" id="cross" class="btn btn-outline-dark btn-lg">✕</button>
+</div>
+<br/>
+
+<!--next,finish_button-->
+<div id="button_con_fin">
+  <input class="answer-check" type = "checkbox"><!--checkbox-->
+  <button type="button" id="button_next" class="btn btn-outline-dark btn-sm">next</button>
+  <button type="button" id="button_finish" class="btn btn-outline-dark btn-sm">finish</button>
+</div>
+<br/>
+{% endblock %}
+<!--footer-->
+<!-- <div class="footer01">
+  <ul class="menu">
+    <li><button type="button" class="btn btn-outline-dark btn-lg"><div class="container" id=homeicon><p></p>
+    </div></button></li>
+    <li><button type="button" class="btn btn-outline-dark btn-lg"><div class="container" id=bookicon><p></p>
+    </div></button></li>
+    <li><button type="button" class="btn btn-outline-dark btn-lg"><div class="container" id=testicon><p></p>
+    </div></button></li>
+    <li><button type="button" class="btn btn-outline-dark btn-lg"><div class="container" id=opicon><p></p>
+    </div></button></li>
+
+  </ul>
+</div> -->
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/test_inside.js') }}"></script>
+{% endblock %}

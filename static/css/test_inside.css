@@ -1,0 +1,98 @@
+/*Q & A*/
+h1{
+    text-align:center;
+    text-decoration: underline 5px;
+    text-decoration-color: #b5ff4d;
+}
+/*~menu~*/
+h5{
+    text-align:center;
+}
+/*finish_button*/
+#button_con_fin{
+    text-align:right;
+    
+}
+/*checkbox*/
+#answer-check{
+    text-align: right;
+}
+/*1,2,3_button*/
+#button_level{
+    pointer-events: none;
+    text-align:center;
+}
+#button_level:disabled{
+/*don't work*/
+    color: #FFF;
+    background: #aaa;
+}
+
+/*〇✕△_button*/
+#button_judge{
+    pointer-events: none;
+    text-align:center;
+}
+#button_judge:disabled{
+/*don't work*/
+    color: #aaa;
+    background: #aaa;
+}
+
+/*next*/
+#button_next{
+    pointer-events: auto;
+}
+#button_next:disabled{
+    color: #fff;
+    background: #ddd;
+}
+/*red(〇)*/
+#circle{
+    color : #ff0000;
+}
+/*yellow(△)*/
+#triangle{
+    color : #ffaa00;
+}
+/*blue(✕)*/
+#cross{
+    color : #0000ff;
+}
+/*footer*/
+.footer01 {
+    color: #808080;
+    background: #e5e5e5;
+    padding: 30px;
+   }
+   .footer01 .menu {
+    margin: 10px;
+    padding: 15px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+   }
+body, p{
+    margin:0;
+}
+#homeicon{
+    background-image: url(../images/1_home.png);
+    background-repeat: no-repeat;
+}
+#bookicon{
+    background-image: url(../images/2_book.png);
+    background-repeat: no-repeat;
+}
+#testicon{
+    background-image: url(../images/3_test.png);
+    background-repeat: no-repeat;
+}
+#opicon{
+    background-image: url(../images/4_option.png);
+    background-repeat: no-repeat;
+}
+.container p{
+    width:9px;
+    height:32px;
+    color:#aaa;
+}
